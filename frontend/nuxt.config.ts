@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
+
   devtools: {
     enabled: true,
 
@@ -8,7 +9,13 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
+
   ssr: true,
+
+  typescript: {
+    typeCheck: true
+  },
+
   dir: {
     assets: "src/assets",
     app: "src/app",
@@ -18,5 +25,7 @@ export default defineNuxtConfig({
     pages: "src/pages",
     plugins: "src/plugins",
     public: "src/public",
-  }
+  },
+
+  modules: ["@nuxt/eslint"]
 });
