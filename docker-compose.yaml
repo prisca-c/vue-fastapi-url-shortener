@@ -14,7 +14,11 @@ services:
           path: ./api/app
           target: /code/app
         - action: rebuild
-          path: requirements.txt
+          path: ./api/requirements.txt
+          target: /code
+    volumes:
+      - ./api/alembic:/code/alembic
+      - ./api/app:/code/app
   frontend:
     build:
       dockerfile: ./frontend/Dockerfile
