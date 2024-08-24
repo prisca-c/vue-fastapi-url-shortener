@@ -1,0 +1,17 @@
+services:
+  api:
+    build:
+      dockerfile: ./api/Dockerfile
+      args:
+        API_PORT: ${API_PORT}
+    environment:
+      API_PORT: ${API_PORT}
+    ports:
+      - ${API_PORT}:${API_PORT}
+  frontend:
+    build:
+      dockerfile: ./frontend/Dockerfile
+      args:
+        FRONTEND_PORT: ${FRONTEND_PORT}
+    ports:
+      - ${FRONTEND_PORT}:${FRONTEND_PORT}
