@@ -1,1 +1,1 @@
-# vue-fastapi-blog
+# vue-fastapi-url-shortener
