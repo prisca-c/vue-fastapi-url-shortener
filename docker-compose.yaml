@@ -8,6 +8,13 @@ services:
       API_PORT: ${API_PORT}
     ports:
       - ${API_PORT}:${API_PORT}
+    develop:
+      watch:
+        - action: sync
+          path: ./api/app
+          target: /code/app
+        - action: rebuild
+          path: requirements.txt
   frontend:
     build:
       dockerfile: ./frontend/Dockerfile

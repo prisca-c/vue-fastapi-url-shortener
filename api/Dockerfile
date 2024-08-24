@@ -12,4 +12,4 @@ COPY /api/app /code/app
 
 ENV API_PORT=${API_PORT}
 
-ENTRYPOINT ["sh", "-c", "fastapi run app/main.py --port ${API_PORT}"]
+ENTRYPOINT ["sh", "-c", "fastapi run app/main.py --port ${API_PORT} --reload"]
