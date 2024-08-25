@@ -1,5 +1,7 @@
 services:
   api:
+    env_file:
+      - .env
     build:
       dockerfile: ./api/Dockerfile
       args:
@@ -12,14 +14,16 @@ services:
       watch:
         - action: sync
           path: ./api/app
-          target: /code/app
+          target: /api/app
         - action: rebuild
           path: ./api/requirements.txt
-          target: /code
+          target: /api
     volumes:
-      - ./api/alembic:/code/alembic
-      - ./api/app:/code/app
+      - ./api/migrations:/api/migrations
+      - ./api/app/data:/api/app/data
   frontend:
+    env_file:
+      - .env
     build:
       dockerfile: ./frontend/Dockerfile
       args:
