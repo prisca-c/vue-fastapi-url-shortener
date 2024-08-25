@@ -1,3 +1,6 @@
 /.env
 
 .idea/
+/api/app/data/
+
+*.pyc
