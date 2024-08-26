@@ -14,10 +14,17 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 
-# Define a dependency to obtain a database session
-def get_db():
-    db = SessionLocal()
-    try:
+class DbContextManager:
+    def __init__(self):
+        self.db = SessionLocal()
+
+    def __enter__(self):
+        return self.db
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.db.close()
+
+
+async def get_db():
+    with DbContextManager() as db:
         yield db
-    finally:
-        db.close()

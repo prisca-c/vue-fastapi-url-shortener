@@ -15,12 +15,15 @@ services:
         - action: sync
           path: ./api/app
           target: /api/app
+        - action: sync
+          path: ./api/migrations/version
+          target: /api/migrations/version
         - action: rebuild
           path: ./api/requirements.txt
           target: /api
     volumes:
       - ./api/migrations:/api/migrations
-      - ./api/app/data:/api/app/data
+      - ./api/data:/api/data
   frontend:
     env_file:
       - .env
