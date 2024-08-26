@@ -14,3 +14,5 @@ class User(Base, BasicMixins):
     password = Column(String)
     last_password = Column(String, nullable=True)
     last_login_at = Column(DateTime, nullable=True)
+
+    urls = relationship("Url", back_populates="user")

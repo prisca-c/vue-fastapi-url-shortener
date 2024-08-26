@@ -17,4 +17,5 @@ class Url(Base, BasicMixins):
     deleted_by = Column(String)
     updated_by = Column(String)
     created_by = Column(String)
+    
     user = relationship("User", back_populates="urls")
