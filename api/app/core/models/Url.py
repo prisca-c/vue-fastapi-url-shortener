@@ -11,11 +11,7 @@ class Url(Base, BasicMixins):
     id = Column(String, primary_key=True, index=True)
     url = Column(String, index=True)
     short_url = Column(String, index=True)
-    user_id = Column(String, ForeignKey("users.id"))
     clicks = Column(Integer)
-    is_active = Column(Boolean, default=True)
-    deleted_by = Column(String)
-    updated_by = Column(String)
-    created_by = Column(String)
-    
+    created_by = Column(String, ForeignKey("users.id"))
+
     user = relationship("User", back_populates="urls")

@@ -1,8 +1,8 @@
 """Create Url Table
 
-Revision ID: 656173d02052
-Revises: 4ba95e343556
-Create Date: 2024-08-26 21:34:34.296701
+Revision ID: 4f0e3c945e93
+Revises: 99bfd12ce032
+Create Date: 2024-08-26 22:17:01.014017
 
 """
 from typing import Sequence, Union
@@ -12,8 +12,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '656173d02052'
-down_revision: Union[str, None] = '4ba95e343556'
+revision: str = '4f0e3c945e93'
+down_revision: Union[str, None] = '99bfd12ce032'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
@@ -24,17 +24,13 @@ def upgrade() -> None:
     sa.Column('id', sa.String(), nullable=False),
     sa.Column('url', sa.String(), nullable=True),
     sa.Column('short_url', sa.String(), nullable=True),
-    sa.Column('user_id', sa.String(), nullable=True),
     sa.Column('clicks', sa.Integer(), nullable=True),
-    sa.Column('is_active', sa.Boolean(), nullable=True),
-    sa.Column('deleted_by', sa.String(), nullable=True),
-    sa.Column('updated_by', sa.String(), nullable=True),
     sa.Column('created_by', sa.String(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.Column('is_deleted', sa.Boolean(), nullable=True),
     sa.Column('deleted_at', sa.String(), nullable=True),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['created_by'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_urls_id'), 'urls', ['id'], unique=False)
