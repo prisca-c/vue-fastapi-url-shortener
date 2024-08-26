@@ -1,17 +1,17 @@
-from typing import Union
+from fastapi import FastAPI, Depends, APIRouter
 
-from fastapi import FastAPI
-
-from api.app.core.database import Base, engine
-
-app = FastAPI()
+import api.app.core.models
+from api.app.core.routes.UserRouter import UserRouter
 
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+class AppFactory:
+    def __init__(self):
+        self.app = FastAPI()
 
+    def run(self):
+        self.register_routes()
+        return self.app
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+    def register_routes(self):
+        UserRouter(self.app, prefix="/users", name="users")
+
