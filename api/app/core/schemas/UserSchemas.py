@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, UUID4
 
 
 class UserBase(BaseModel):
@@ -11,8 +11,7 @@ class UserCreate(UserBase):
 
 
 class User(UserBase):
-    id: int
-    is_active: bool
+    id: UUID4
 
     class Config:
         orm_mod = True

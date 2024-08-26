@@ -1,10 +1,11 @@
 from pydantic import BaseModel
+from pydantic.v1 import UUID4
 
 
 class UrlBase(BaseModel):
     url: str
     short_url: str
-    user_id: str
+    created_by: str
 
 
 class UrlCreate(UrlBase):
@@ -12,16 +13,13 @@ class UrlCreate(UrlBase):
 
 
 class Url(UrlBase):
-    id: str
+    id: UUID4
     created_at: str
     updated_at: str
     clicks: int
-    is_active: bool
     is_deleted: bool
     deleted_at: str
     deleted_by: str
-    updated_by: str
-    created_by: str
 
     class Config:
         orm_mod = True
