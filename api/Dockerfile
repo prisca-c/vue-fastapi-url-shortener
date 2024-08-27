@@ -1,4 +1,4 @@
-FROM python:3.9-alpine3.20
+FROM python:3.12-alpine3.20
 
 ARG API_PORT
 
