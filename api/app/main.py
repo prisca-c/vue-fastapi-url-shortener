@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends, APIRouter
+from fastapi import FastAPI
 
 import api.app.core.models
 from api.app.core.routes.UserRouter import UserRouter
