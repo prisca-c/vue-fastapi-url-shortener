@@ -1,4 +1,4 @@
-# Vue/Nuxt 3 and Fast API Blog
+# Frontend
 
 ## Setup
 
