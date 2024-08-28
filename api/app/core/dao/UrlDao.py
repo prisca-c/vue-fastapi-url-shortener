@@ -15,4 +15,5 @@ class UrlDao(BaseDao):
 
     def create(self, payload: UrlCreate):
         url_id = str(uuid4())
-        return super().create({**payload.model_dump(), "id": url_id})
+        clicks = 0
+        return super().create({**payload.model_dump(), "id": url_id, "clicks": clicks})
