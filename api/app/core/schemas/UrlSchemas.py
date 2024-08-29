@@ -9,7 +9,7 @@ class UrlBase(BaseModel):
 
 
 class UrlCreate(UrlBase):
-    pass
+    name: str
 
 
 class Url(UrlBase):

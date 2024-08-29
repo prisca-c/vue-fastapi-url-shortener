@@ -10,7 +10,8 @@ class Url(Base, BasicMixins):
 
     id = Column(String, primary_key=True, index=True)
     url = Column(String, index=True)
-    short_url = Column(String, index=True)
+    name = Column(String, index=True)
+    short_url = Column(String, index=True, unique=True)
     clicks = Column(Integer)
     created_by = Column(String, ForeignKey("users.id"))
 
